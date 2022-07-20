@@ -1,0 +1,19 @@
+{
+  "name": "jw-git-hook",
+  "version": "0.0.1",
+  "description": "git hook",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jianwuG/jw-git-hook.git"
+  },
+  "author": "jianwuG",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jianwuG/jw-git-hook/issues"
+  },
+  "homepage": "https://github.com/jianwuG/jw-git-hook#readme"
+}
