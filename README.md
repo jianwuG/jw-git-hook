@@ -1,2 +1,4 @@
-# jw-git-hook
-git hook
+- [x] eslint校验
+- [x] 提交规范校验
+- [x] 提交用户邮箱校验  
+- [ ] 提交项目文件命名规范校验(kebab-case)  

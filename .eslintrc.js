@@ -20,7 +20,7 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 0,
     // allow debugger during development
-    indent: ['error', 4, { SwitchCase: 1 }],
+    indent: ['off', 4, { SwitchCase: 1 }],
     quotes: ['warn', 'single'],
     semi: ['error', 'always'],
     'space-before-function-paren': ['error', 'never'],

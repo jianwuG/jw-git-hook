@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 const childProcess = require('child_process');
-const  chalk = require('chalk')
+const chalk = require('chalk');
 try {
     childProcess.execSync('npm run lint');
 } catch (error) {
-    console.log(chalk.red(error.stdout.toString()))
+    console.log(chalk.red(error.stdout.toString()));
     process.exit(1);
 }
