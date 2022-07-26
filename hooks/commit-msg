@@ -1,0 +1,39 @@
+#!/bin/bash
+# /bin/sh 相当于 /bin/bash --posix
+# sh跟bash的区别，实际上就是bash有没有开启posix模式的区别。so，可以预想的是，
+# 如果第一行写成 #!/bin/bash --posix，那么脚本执行效果跟#!/bin/sh是一样的（遵循posix的特定规范，有可能就包括这样的规范：“当某行代码出错时，不继续往下解释”）
+
+
+# 获取当前提交的git commit -m '' $1获取输入的值
+commit_msg=`cat $1`
+
+# 获取用户 email
+email=`git config user.email`
+commit_re="^(feat|fix|docs|style|refactor|perf|test|workflow|build|ci|chore|release|workflow)(\(.+\))?: .{1,100}"
+
+
+# “=~”正则匹配，用来判断其左侧的参数是否符合右边的要求，如果匹配则为真（返回1）
+# ，不匹配则为假（返回0）
+if [[ ! $commit_msg =~ $commit_re ]]
+then
+	echo "不合法的 commit 消息提交格式，请使用正确的格式："
+	echo "详情请查看 git commit 提交规范：https://github.com/woai3c/Front-end-articles/blob/master/git%20commit%20style.md"
+
+	# 异常退出
+	exit 1
+fi
+
+
+email_re="100\.com"
+
+# 逻辑与的表达：if [ $xxx=a -a $xx=b ] -a表示and的意思  /  if [ $xxx=a ] && [  $xx=b ] 
+# 逻辑或的表达： if [ $xxx=a -o $xx=b ] -o表示or的意思  / if [ $xxx=a ] || [  $xx=b ]
+
+
+if [[ ! $email =~ $email_re ]]
+then
+	echo "此用户没有权限，具有权限的用户为： 100.com"
+
+	# 异常退出
+	exit 1
+fi
