@@ -31,21 +31,40 @@ const checkEmail = (testEmail) => {
     }
 };
 
+/**
+ * 校验提交文件目录命名规范
+ * @param {*} folder 
+ */
 const checkFileCase = async (folder) => {
     await fs.readdir(folder, async (_err, files) => {
-        for (const file of files) {
-            const isDir = stats.isDirectory(); // 是文件夹
-            if (isDir) {
-                checkFileCase(folder + '/' + file);
-            } else {
-                const fileName = file.split('.')[0];
-                if (/[A-Z]/.test(fileName)) {
-                    // 目前只校验是否含大写字母
-                    console.log(chalk.yellow(folder + '/' + file + ' 文件请遵守kebab-case命名规范'));
-                    process.exit(1);
-                }
-            }
+        if (_err) {
+            console.warn(_err);
+            process.exit(1);
         }
+
+        // 遍历读取到的文件列表
+        files.forEach(filename => {
+            // 获取当前文件的绝对路径
+            const filedir = path.join(folder, filename);
+            // 根据文件路径获取文件信息，返回一个fs.Stats对象
+            fs.stat(filedir, async (err, stats) => {
+                if (err) {
+                    console.warn(err);
+                    process.exit(1);
+                } else {
+                    const isDir = stats.isDirectory(); // 是文件夹
+                    if (isDir) {
+                        checkFileCase(folder + '/' + filename);
+                    } else {
+                        if (/[A-Z]/.test(filename)) {
+                            // 目前只校验是否含大写字母
+                            console.log(chalk.yellow(folder + '/' + filename + ' 文件请遵守kebab-case命名规范'));
+                            process.exit(1);
+                        }
+                    }
+                }
+            });
+        });
     });
 };
 
