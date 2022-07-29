@@ -34,8 +34,8 @@ const checkEmail = (testEmail) => {
 const checkFileCase = async (folder) => {
     await fs.readdir(folder, async (_err, files) => {
         for (const file of files) {
-            const extname = path.extname(file);
-            if (!extname) {
+            const isDir = stats.isDirectory(); // 是文件夹
+            if (isDir) {
                 checkFileCase(folder + '/' + file);
             } else {
                 const fileName = file.split('.')[0];
