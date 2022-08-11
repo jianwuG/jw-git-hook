@@ -1,6 +1,6 @@
 {
   "name": "jw-git-hook",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "git hook",
   "main": "index.js",
   "scripts": {
@@ -18,11 +18,17 @@
   },
   "homepage": "https://github.com/jianwuG/jw-git-hook#readme",
   "devDependencies": {
+    "@babel/parser": "^7.18.11",
+    "@babel/traverse": "^7.18.11",
     "babel-eslint": "^8.2.3",
     "chalk": "^4.1.1",
     "eslint": "^8.20.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
     "standard": "^17.0.0"
+  },
+  "dependencies": {
+    "@vue/compiler-sfc": "^3.2.37",
+    "vue": "^3.2.37"
   }
 }

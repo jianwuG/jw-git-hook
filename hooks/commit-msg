@@ -1,12 +1,15 @@
 #!/usr/bin/env node
-const { checkCommit, checkEmail, checkFileCase } = require('./check.js');
+const { checkCommit, checkEmail, checkFileCase, checkFileExplanatory } = require('./check.js');
 const testEmail = /100\.com$/ || /@qq\.com$/;
 const path = require('path');
 
+const _path = path.resolve() + '/src';
+
 const commitCheck = async () => {
-    await checkFileCase(path.resolve() + '/src');
+    await checkFileCase(_path);
     await checkCommit();
     await checkEmail(testEmail);
+    await checkFileExplanatory(_path);
 };
 
 commitCheck();

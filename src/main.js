@@ -9,11 +9,27 @@
 
 // ✖ 4 problems (4 errors, 0 warnings)
 
+/**
+ * 加法
+ * @param {*} a
+ * @param {*} b
+ * @returns
+ */
 function add(a, b) {
     return a + b;
 }
+/**
+ * 减法
+ * @param {*} a
+ * @param {*} b
+ * @returns
+ */
+function reduce(a, b) {
+    return a - b;
+}
 
 add(1, 2);
+reduce(2, 1);
 
 // 不合法的 commit 消息格式，请使用正确的提交格式：
 //   fix: handle events on blur (close #28)：
