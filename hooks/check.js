@@ -142,7 +142,7 @@ const checkFileStats = async (folder, isFilePath, checkCallBack) => {
                 } else {
                     const isDir = stats.isDirectory(); // 是文件夹
                     if (isDir) {
-                        checkFileExplanatory(folder + '/' + filename);
+                        checkFileStats(folder + '/' + filename, isFilePath, checkCallBack);
                     } else {
                         checkCallBack(isFilePath ? fileDir : filename);
                     }
